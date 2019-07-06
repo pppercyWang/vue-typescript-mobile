@@ -15,15 +15,11 @@ module.exports = {
   },
   devServer: {
     // 配置代理
-    // proxy: {
-    //   '/api': {
-    //     target: 'https://baidu.com/v1',
-    //     changeOrigin: true,
-    //     ws: true,
-    //     pathRewrite: {
-    //       '^/api': ''
-    //     }
-    //   }
-    // }
+    proxy: {
+      '/api': {
+        target: 'http://127.0.0.1:8848/',
+        changeOrigin: true,
+      }
+    }
   },
 }

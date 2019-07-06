@@ -1,8 +1,5 @@
-import request from '@/utils/request';
+import http from '@/utils/http';
 
-export const getSwiperImgs = (param: string) => {
-    return request({
-        url: '/api/swiper/' + param,
-        method: 'GET',
-    });
+export const getSwiperImgs = (data: any, config: any) => {
+    return http.post('book/list', data, config);
 };
