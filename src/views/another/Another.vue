@@ -24,7 +24,7 @@ import { Toast, Swipe, SwipeItem, Row, Col, Icon, Cell, CellGroup } from "vant";
     [CellGroup.name]: CellGroup
   }
 })
-export default class Home extends Vue {
+export default class Another extends Vue {
   private swiperImgsData = null;
   @Action('swiperImgs') private actionSwiperImgs: any;
   @Getter('swiperImgs') private getterSwiperImgs: any;
