@@ -29,10 +29,10 @@ export default class extends Vue {
   private swiperImgsData = null;
   @Action('swiperImgs') private actionSwiperImgs;
   @Getter('swiperImgs') private getterSwiperImgs;
-  private created() {
+  private async created() {
     if (this.getterSwiperImgs.length === 0) {
      try {
-        this.actionSwiperImgs({type: 2} as SwiperType);  // 传参时进行类型检查
+        await this.actionSwiperImgs({type: 2} as SwiperType);  // 传参时进行类型检查
         this.swiperImgsData = this.getterSwiperImgs;
       } catch (e) {
         console.log(e);
