@@ -19,3 +19,4 @@ npm run build
 ```
 npm run lint
 ```
+![image](https://github.com/pppercyWang/vue-typescript-mobile/blob/master/public/img/20190708194751.png)
