@@ -1,6 +1,6 @@
 {
-  "name": "vue-typescript-demo",
-  "short_name": "vue-typescript-demo",
+  "name": "vue-typescript-mobile",
+  "short_name": "vue-typescript-mobile",
   "icons": [
     {
       "src": "/img/icons/android-chrome-192x192.png",

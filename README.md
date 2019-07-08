@@ -1,4 +1,4 @@
-# vue-typescript-demo
+# vue-typescript-mobile
 
 ## Project setup
 ```

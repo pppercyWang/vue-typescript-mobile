@@ -13,6 +13,7 @@
 import { Component, Vue, Watch, Prop } from "vue-property-decorator";
 import { Action, Mutation, State, Getter } from "vuex-class";
 import { Toast, Swipe, SwipeItem, Row, Col, Icon, Cell, CellGroup } from "vant";
+import { SwiperType } from '@/interface';
 @Component({
   components: {
     [Swipe.name]: Swipe,
@@ -24,17 +25,18 @@ import { Toast, Swipe, SwipeItem, Row, Col, Icon, Cell, CellGroup } from "vant";
     [CellGroup.name]: CellGroup
   }
 })
-export default class Another extends Vue {
+export default class extends Vue {
   private swiperImgsData = null;
-  @Action('swiperImgs') private actionSwiperImgs: any;
-  @Getter('swiperImgs') private getterSwiperImgs: any;
-  private handleClick() {
-    Toast("222222222222");
-  }
+  @Action('swiperImgs') private actionSwiperImgs;
+  @Getter('swiperImgs') private getterSwiperImgs;
   private created() {
     if (this.getterSwiperImgs.length === 0) {
-      this.actionSwiperImgs();
-      this.swiperImgsData = this.getterSwiperImgs;
+     try {
+        this.actionSwiperImgs({type: 2} as SwiperType);  // 传参时进行类型检查
+        this.swiperImgsData = this.getterSwiperImgs;
+      } catch (e) {
+        console.log(e);
+      }
     } else {
       console.log('store中已储存swiperImgs数据');
       this.swiperImgsData = this.getterSwiperImgs;
@@ -42,30 +44,13 @@ export default class Another extends Vue {
   }
 }
 </script>
-<style lang="sass">
-  #listMovieBox
-    padding: 0 16px
-    p
-      text-align: left;
-  .header 
-  .header-swipe 
-    img 
-      width: 100%;
+<style scoped lang="scss">
+.header-swipe{
+  margin-bottom: 10px;
+  img {
+     width: 100%;
       display: block;
       height: 240px;
-    margin-bottom: 10px;
-  .index-group 
-    margin-bottom: 15px;
-  .index-links
-    padding: 10px;
-    font-size: 13px;
-    text-align: center;
-    background-color: #fff;
-    i 
-      display: block;
-      font-size: 26px;
-  .title-left
-    margin-right: 190px
-    span
-      width: 200px
+  }
+}
 </style>

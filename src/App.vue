@@ -14,7 +14,7 @@ import '../public/css/icon.css';
     Header,
   },
 })
-export default class App extends Vue {
+export default class extends Vue {
 }
 </script>
 <style>
