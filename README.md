@@ -6,6 +6,7 @@
 #### pc端管理平台模板：https://github.com/pppercyWang/vue-typescript-admin
 
 ### 项目结构
+```javascript
 src 
   api ---api接口
   assets ---静态资源
@@ -17,7 +18,7 @@ src
 vue.config.js ---vue-cli3配置文件
 tsconfig.json ---ts配置文件
 tslint.json ---语法检查配置文件
-
+```
  **在我的学习过程中。看过许多的前端工程化代码，各有千秋。我觉得项目的结构设计很重要！我觉得作为一个模板，最重要的就是简单易懂。我没有依赖很多的包，尽量保持代码的整洁干净。关于Vuex在单页面应用我也有自己的理解。大家可以参考我的这篇文章，如有不正，欢迎指正。qq：845082868。谢谢！**
  
  文章地址：
