@@ -2,6 +2,7 @@ import axios from 'axios';
 import qs from 'qs';
 class Http {
     private service: any = null;
+    // private JSON: any = JSON;
     constructor() {
         axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
         this.service = axios.create({
@@ -9,7 +10,11 @@ class Http {
             timeout: 5000000
         });
         this.service.interceptors.request.use((config) => {
-            config.data = qs.stringify(config.data);
+            // config.data = JSON.stringify(config.data); JSON传参
+            // if(sessionStorage.getItem('token')){   带token
+            //     config.headers.Authorization = 'BEARER ' + sessionStorage.getItem('token');
+            // }        
+            config.data = qs.stringify(config.data); // form-data传参
             return config;
         }, (error) => Promise.reject(error));
         this.service.interceptors.response.use((response) => {
