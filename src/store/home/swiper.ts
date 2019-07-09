@@ -1,5 +1,5 @@
 import { Commit } from 'vuex';
-import { getSwiperImgs } from '@/api/home';
+import { apiGetSwiperImgs } from '@/api/home';
 const state: any = {
     swiperImgs: [],
 };
@@ -30,7 +30,7 @@ const actions: any = {
     // 调用api获取数据
     // async swiperImgs(context: { commit: Commit }, data: any) {
     //     console.log('通过action获取swiperImgs数据');
-    //     const res: any = await getSwiperImgs(data, null);
+    //     const res: any = await apiGetSwiperImgs(data, null);
     //     context.commit('saveSwiperImgs', res);
     // },
 };

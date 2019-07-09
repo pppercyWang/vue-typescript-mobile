@@ -11,9 +11,9 @@ class Http {
         });
         this.service.interceptors.request.use((config) => {
             // config.data = JSON.stringify(config.data); JSON传参
-            // if(sessionStorage.getItem('token')){   带token
+            // if (sessionStorage.getItem('token')){   带token
             //     config.headers.Authorization = 'BEARER ' + sessionStorage.getItem('token');
-            // }        
+            // };
             config.data = qs.stringify(config.data); // form-data传参
             return config;
         }, (error) => Promise.reject(error));
