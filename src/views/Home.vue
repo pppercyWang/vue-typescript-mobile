@@ -8,67 +8,57 @@
       </van-swipe>
     </div>
     <div class="body">
-      <van-row class="index-links">
-        <van-col span="8">
+      <van-grid :border="false" :column-num="3">
+        <van-grid-item>
           <div @click="handleClick()">
             <i class="iconfont percy-icon-meishi2"></i>美食
           </div>
-        </van-col>
-        <van-col span="8">
-          <div @click="handleClick()">
+        </van-grid-item>
+        <van-grid-item>
+           <div @click="handleClick()">
             <i class="iconfont percy-icon-dianying"></i>电影
           </div>
-        </van-col>
-        <van-col span="8">
-          <div @click="handleClick()">
+        </van-grid-item>
+        <van-grid-item>
+           <div @click="handleClick()">
             <i class="iconfont percy-icon-yule"></i>娱乐
           </div>
-        </van-col>
-      </van-row>
-      <van-row class="index-links">
-        <van-col span="8">
+        </van-grid-item>
+        <van-grid-item>
           <div @click="handleClick()">
             <i class="iconfont percy-icon-waimai"></i>外卖
           </div>
-        </van-col>
-        <van-col span="8">
-          <div @click="handleClick()">
+        </van-grid-item>
+        <van-grid-item>
+           <div @click="handleClick()">
             <i class="iconfont percy-icon-zhusujiedai"></i>酒店
           </div>
-        </van-col>
-        <van-col span="8">
-          <div @click="handleClick()">
+        </van-grid-item>
+        <van-grid-item>
+           <div @click="handleClick()">
             <i class="iconfont percy-icon-chaoshi"></i>超市
           </div>
-        </van-col>
-      </van-row>
-      <van-row class="index-links">
-        <van-col span="8">
+        </van-grid-item>
+        <van-grid-item>
           <div @click="handleClick()">
             <i class="iconfont percy-icon-chepai"></i>打车
           </div>
-        </van-col>
-        <van-col span="8">
-          <div @click="handleClick()">
+        </van-grid-item>
+        <van-grid-item>
+           <div @click="handleClick()">
             <i class="iconfont percy-icon-chongzhi"></i>充值
           </div>
-        </van-col>
-        <van-col span="8">
-          <div @click="handleClick()">
+        </van-grid-item>
+        <van-grid-item>
+           <div @click="handleClick()">
             <i class="iconfont percy-icon-lvyou"></i>旅游
           </div>
-        </van-col>
-      </van-row>
+        </van-grid-item>
+      </van-grid>
     </div>
     <div class="footer">
-      <van-cell-group class="index-group">
-        <van-cell
-          @click="handleClick"
-          icon="points"
-          title-class="title-left"
-          title="个人中心"
-          is-link
-        />
+      <van-cell-group class="top-group">
+        <van-cell @click="handleClick" icon="points" title-class="title-left" title="个人中心" is-link />
         <van-cell icon="gold-coin-o" title-class="title-left" title="我的钱包" is-link />
         <van-cell icon="gift-o" title-class="title-left" title="活动中心" is-link />
       </van-cell-group>
@@ -77,71 +67,67 @@
       </van-cell-group>
     </div>
   </div>
+  
 </template>
 <script lang='ts'>
 import { Component, Vue, Watch, Prop } from "vue-property-decorator";
 import { Action, Mutation, State, Getter } from "vuex-class";
-import { Toast, Swipe, SwipeItem, Row, Col, Icon, Cell, CellGroup } from "vant";
-import { SwiperType } from '@/interface';
+import { Toast, Swipe, SwipeItem, Row, Col, Icon, Cell, CellGroup, Grid, GridItem } from "vant";
+import { SwiperType } from "@/interface";
 @Component({
   components: {
     [Swipe.name]: Swipe,
     [SwipeItem.name]: SwipeItem,
-    [Row.name]: Row,
-    [Col.name]: Col,
-    [Icon.name]: Icon,
     [Cell.name]: Cell,
-    [CellGroup.name]: CellGroup
+    [CellGroup.name]: CellGroup,
+    [Grid.name]: Grid,
+    [GridItem.name]: GridItem,
   }
 })
 export default class extends Vue {
   private swiperImgsData = null;
-  @Action('swiperImgs') private actionSwiperImgs;
-  @Getter('swiperImgs') private getterSwiperImgs;
+  @Action("swiperImgs") private actionSwiperImgs;
+  @Getter("swiperImgs") private getterSwiperImgs;
   private handleClick() {
-    this.$router.push('/another');
+    this.$router.push("/another");
   }
-  private async  created() {
+  private async created() {
     if (this.getterSwiperImgs.length === 0) {
       try {
-        await this.actionSwiperImgs({type: 2} as SwiperType);  // 传参时进行类型检查
+        await this.actionSwiperImgs({ type: 2 } as SwiperType); // 传参时进行类型检查
         this.swiperImgsData = this.getterSwiperImgs;
       } catch (e) {
         console.log(e);
       }
     } else {
-      console.log('store中已储存swiperImgs数据');
+      console.log("store中已储存swiperImgs数据");
       this.swiperImgsData = this.getterSwiperImgs;
     }
   }
 }
 </script>
 <style scoped lang="scss">
-.header-swipe{
+.header-swipe {
   margin-bottom: 10px;
   img {
-     width: 100%;
-      display: block;
-      height: 240px;
+    width: 100%;
+    display: block;
+    height: 240px;
   }
 }
-.index-group{
+.body{
+  i {
+    display: block;
+    font-size: 23px;  // grid中icon和字体大小
+  }
+}
+.top-group {
   margin-bottom: 15px;
 }
-.index-links{
-  padding: 10px;
-  font-size: 13px;
-  text-align: center;
-  background-color: #fff;
-  i{
-    display: block;
-      font-size: 26px;
-  }
-}
-.title-left{
+.title-left {
   margin-right: 190px;
-  span{
-      width: 200px;
+  span {
+    width: 200px;
   }
 }
 </style>
