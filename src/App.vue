@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" ontouchstart=""> <!-- ontouchstart="" 解决按钮组件ios点击没有阴影反馈效果 -->
     <Header></Header>
     <router-view/>
   </div>
