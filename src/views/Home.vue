@@ -16,7 +16,7 @@
         </van-grid-item>
         <van-grid-item>
           <div @click="handleClick()">
-            <grid-content iconStr="percy-icon-dianying" msg="电影" number="4"></grid-content>
+            <grid-content iconStr="percy-icon-dianying" msg="电影" number="43"></grid-content>
           </div>
         </van-grid-item>
         <van-grid-item>

@@ -1,6 +1,11 @@
 <template>
   <div class="grid-content-wrap">
-       <van-icon :class="[iconStr, iconfont]" :info="number" />{{msg}}
+      <div>
+          <van-icon  :class="[iconStr, iconfont]" :info="number" />
+      </div>
+       <div>
+           {{msg}}
+       </div>
   </div>
 </template>
 <script lang='ts'>
@@ -27,7 +32,6 @@ export default class extends Vue {
     font-size: 14px;
     i{
         font-size: 25px;
-        display: block;
     }
 }
 </style>
