@@ -11,47 +11,47 @@
       <van-grid :border="false" :column-num="3">
         <van-grid-item>
           <div @click="handleClick()">
-            <i class="iconfont percy-icon-meishi2"></i>美食
-          </div>
-        </van-grid-item>
-        <van-grid-item>
-           <div @click="handleClick()">
-            <i class="iconfont percy-icon-dianying"></i>电影
-          </div>
-        </van-grid-item>
-        <van-grid-item>
-           <div @click="handleClick()">
-            <i class="iconfont percy-icon-yule"></i>娱乐
+            <grid-content iconStr="percy-icon-meishi2" msg="美食"></grid-content>
           </div>
         </van-grid-item>
         <van-grid-item>
           <div @click="handleClick()">
-            <i class="iconfont percy-icon-waimai"></i>外卖
-          </div>
-        </van-grid-item>
-        <van-grid-item>
-           <div @click="handleClick()">
-            <i class="iconfont percy-icon-zhusujiedai"></i>酒店
-          </div>
-        </van-grid-item>
-        <van-grid-item>
-           <div @click="handleClick()">
-            <i class="iconfont percy-icon-chaoshi"></i>超市
+            <grid-content iconStr="percy-icon-dianying" msg="电影" number="4"></grid-content>
           </div>
         </van-grid-item>
         <van-grid-item>
           <div @click="handleClick()">
-            <i class="iconfont percy-icon-chepai"></i>打车
+            <grid-content iconStr="percy-icon-yule" msg="娱乐"></grid-content>
           </div>
         </van-grid-item>
         <van-grid-item>
-           <div @click="handleClick()">
-            <i class="iconfont percy-icon-chongzhi"></i>充值
+          <div @click="handleClick()">
+            <grid-content iconStr="percy-icon-waimai" msg="外卖" number="2"></grid-content>
           </div>
         </van-grid-item>
         <van-grid-item>
-           <div @click="handleClick()">
-            <i class="iconfont percy-icon-lvyou"></i>旅游
+          <div @click="handleClick()">
+            <grid-content iconStr="percy-icon-zhusujiedai" msg="酒店"></grid-content>
+          </div>
+        </van-grid-item>
+        <van-grid-item>
+          <div @click="handleClick()">
+            <grid-content iconStr="percy-icon-chaoshi" msg="超市"></grid-content>
+          </div>
+        </van-grid-item>
+         <van-grid-item>
+          <div @click="handleClick()">
+            <grid-content iconStr="percy-icon-chepai" msg="打车"></grid-content>
+          </div>
+        </van-grid-item>
+         <van-grid-item>
+          <div @click="handleClick()">
+            <grid-content iconStr="percy-icon-chongzhi" msg="充值"></grid-content>
+          </div>
+        </van-grid-item>
+        <van-grid-item>
+          <div @click="handleClick()">
+            <grid-content iconStr="percy-icon-lvyou" msg="旅游"></grid-content>
           </div>
         </van-grid-item>
       </van-grid>
@@ -73,6 +73,7 @@
 import { Component, Vue, Watch, Prop } from "vue-property-decorator";
 import { Action, Mutation, State, Getter } from "vuex-class";
 import { Toast, Swipe, SwipeItem, Row, Col, Icon, Cell, CellGroup, Grid, GridItem } from "vant";
+import GridContent from "@/components/home/GridContent.vue";
 import { SwiperType } from "@/interface";
 @Component({
   components: {
@@ -82,6 +83,7 @@ import { SwiperType } from "@/interface";
     [CellGroup.name]: CellGroup,
     [Grid.name]: Grid,
     [GridItem.name]: GridItem,
+    GridContent
   }
 })
 export default class extends Vue {
