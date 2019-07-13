@@ -10,47 +10,47 @@
     <div class="body">
       <van-grid :border="false" :column-num="3">
         <van-grid-item>
-          <div @click="handleClick()">
+          <div @click="$router.push('/another')">
             <grid-content iconStr="percy-icon-meishi2" msg="美食"></grid-content>
           </div>
         </van-grid-item>
         <van-grid-item>
-          <div @click="handleClick()">
+          <div @click="$router.push('/another')">
             <grid-content iconStr="percy-icon-dianying" msg="电影" number="43"></grid-content>
           </div>
         </van-grid-item>
         <van-grid-item>
-          <div @click="handleClick()">
+          <div @click="$router.push('/another')">
             <grid-content iconStr="percy-icon-yule" msg="娱乐"></grid-content>
           </div>
         </van-grid-item>
         <van-grid-item>
-          <div @click="handleClick()">
+          <div @click="$router.push('/another')">
             <grid-content iconStr="percy-icon-waimai" msg="外卖" number="2"></grid-content>
           </div>
         </van-grid-item>
         <van-grid-item>
-          <div @click="handleClick()">
+          <div @click="$router.push('/another')">
             <grid-content iconStr="percy-icon-zhusujiedai" msg="酒店"></grid-content>
           </div>
         </van-grid-item>
         <van-grid-item>
-          <div @click="handleClick()">
+          <div @click="$router.push('/another')">
             <grid-content iconStr="percy-icon-chaoshi" msg="超市"></grid-content>
           </div>
         </van-grid-item>
          <van-grid-item>
-          <div @click="handleClick()">
+          <div @click="$router.push('/another')">
             <grid-content iconStr="percy-icon-chepai" msg="打车"></grid-content>
           </div>
         </van-grid-item>
          <van-grid-item>
-          <div @click="handleClick()">
+          <div @click="$router.push('/another')">
             <grid-content iconStr="percy-icon-chongzhi" msg="充值"></grid-content>
           </div>
         </van-grid-item>
         <van-grid-item>
-          <div @click="handleClick()">
+          <div @click="$router.push('/another')">
             <grid-content iconStr="percy-icon-lvyou" msg="旅游"></grid-content>
           </div>
         </van-grid-item>
@@ -58,7 +58,7 @@
     </div>
     <div class="footer">
       <van-cell-group class="top-group">
-        <van-cell @click="handleClick" icon="points" title-class="title-left" title="个人中心" is-link />
+        <van-cell @click="$router.push('/another')" icon="points" title-class="title-left" title="个人中心" is-link />
         <van-cell icon="gold-coin-o" title-class="title-left" title="我的钱包" is-link />
         <van-cell icon="gift-o" title-class="title-left" title="活动中心" is-link />
       </van-cell-group>
@@ -90,9 +90,6 @@ export default class extends Vue {
   private swiperImgsData = null;
   @Action("swiperImgs") private actionSwiperImgs;
   @Getter("swiperImgs") private getterSwiperImgs;
-  private handleClick() {
-    this.$router.push("/another");
-  }
   private async created() {
     if (this.getterSwiperImgs.length === 0) {
       try {
