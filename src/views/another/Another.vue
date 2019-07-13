@@ -1,28 +1,18 @@
 <template>
   <div class="home">
     <div class="header">
-      <van-swipe class="header-swipe" :autoplay="3000">
-        <van-swipe-item v-for="(item,index) in swiperImgsData" :key="index">
-          <img :src="item.src" />
-        </van-swipe-item>
-      </van-swipe>
+     <swiper :imgs="swiperImgsData"></swiper>
     </div>
   </div>
 </template>
 <script lang='ts'>
 import { Component, Vue, Watch, Prop } from "vue-property-decorator";
 import { Action, Mutation, State, Getter } from "vuex-class";
-import { Toast, Swipe, SwipeItem, Row, Col, Icon, Cell, CellGroup } from "vant";
+import Swiper from "@/components/Swiper.vue";
 import { SwiperType } from '@/interface';
 @Component({
   components: {
-    [Swipe.name]: Swipe,
-    [SwipeItem.name]: SwipeItem,
-    [Row.name]: Row,
-    [Col.name]: Col,
-    [Icon.name]: Icon,
-    [Cell.name]: Cell,
-    [CellGroup.name]: CellGroup
+    Swiper
   }
 })
 export default class extends Vue {
