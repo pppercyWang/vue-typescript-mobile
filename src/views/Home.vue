@@ -4,6 +4,11 @@
       <swiper :imgs="swiperImgsData"></swiper>
     </div>
     <div class="body">
+      <!-- <div class="skeleton" v-show="skeletonShow"> //当首页的数据是通过api获取的时候。可以使用骨架屏来提高用户体验
+        <van-skeleton :row="3" row-width="160" />
+        <van-skeleton :row="3" row-width="160" />
+        <van-skeleton :row="3" row-width="160" />
+      </div> -->
       <van-grid :border="false" :column-num="3">
         <van-grid-item>
           <div @click="$router.push('/another')">
@@ -68,7 +73,7 @@
 <script lang='ts'>
 import { Component, Vue, Watch, Prop } from "vue-property-decorator";
 import { Action, Mutation, State, Getter } from "vuex-class";
-import { Toast, Row, Col, Icon, Cell, CellGroup, Grid, GridItem } from "vant";
+import { Toast, Row, Col, Icon, Skeleton, Cell, CellGroup, Grid, GridItem } from "vant";
 import GridContent from "@/components/home/GridContent.vue";
 import Swiper from "@/components/Swiper.vue";
 import { SwiperType } from "@/interface";
@@ -77,12 +82,14 @@ import { SwiperType } from "@/interface";
     [Cell.name]: Cell,
     [CellGroup.name]: CellGroup,
     [Grid.name]: Grid,
+    [Skeleton.name]: Skeleton,
     [GridItem.name]: GridItem,
     GridContent,
     Swiper,
   }
 })
 export default class extends Vue {
+  private skeletonShow: boolean = true;
   private swiperImgsData = null;
   @Action("swiperImgs") private actionSwiperImgs;
   @Getter("swiperImgs") private getterSwiperImgs;
@@ -124,5 +131,19 @@ export default class extends Vue {
   span {
     width: 200px;
   }
+}
+.skeleton{
+  margin:20px 0px;
+  .van-skeleton {
+  display: inline-block;
+  width: 50px;
+  margin: 0px 22px;
+  .van-skeleton__content {
+    width: 50px;
+  }
+  .van-skeleton__row {
+    height: 50px;
+  }
+}
 }
 </style>
