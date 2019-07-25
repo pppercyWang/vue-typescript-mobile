@@ -156,7 +156,6 @@ export default class extends Vue {
   }
 }
 .skeleton {
-  margin: 20px 0px;
   .van-skeleton {
     display: inline-block;
     width: 50px;
@@ -166,6 +165,7 @@ export default class extends Vue {
     }
     .van-skeleton__row {
       height: 50px;
+      margin: 17px 0px;
     }
   }
 }
