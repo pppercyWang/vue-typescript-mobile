@@ -4,12 +4,13 @@
       <swiper :imgs="swiperImgsData"></swiper>
     </div>
     <div class="body">
-      <!-- <div class="skeleton" v-show="skeletonShow"> //当首页的数据是通过api获取的时候。可以使用骨架屏来提高用户体验
+      <!-- 当首页的数据是通过api获取的时候。可以使用骨架屏来提高用户体验 -->
+      <div class="skeleton" v-show="skeletonShow">
         <van-skeleton :row="3" row-width="160" />
         <van-skeleton :row="3" row-width="160" />
         <van-skeleton :row="3" row-width="160" />
-      </div> -->
-      <van-grid :border="false" :column-num="3">
+      </div>
+      <van-grid :border="false" :column-num="3" v-show="!skeletonShow">
         <van-grid-item>
           <div @click="$router.push('/another')">
             <grid-content iconStr="percy-icon-meishi2" msg="美食"></grid-content>
@@ -40,12 +41,12 @@
             <grid-content iconStr="percy-icon-chaoshi" msg="超市"></grid-content>
           </div>
         </van-grid-item>
-         <van-grid-item>
+        <van-grid-item>
           <div @click="$router.push('/another')">
             <grid-content iconStr="percy-icon-chepai" msg="打车"></grid-content>
           </div>
         </van-grid-item>
-         <van-grid-item>
+        <van-grid-item>
           <div @click="$router.push('/another')">
             <grid-content iconStr="percy-icon-chongzhi" msg="充值"></grid-content>
           </div>
@@ -59,7 +60,13 @@
     </div>
     <div class="footer">
       <van-cell-group class="top-group">
-        <van-cell @click="$router.push('/another')" icon="points" title-class="title-left" title="个人中心" is-link />
+        <van-cell
+          @click="$router.push('/another')"
+          icon="points"
+          title-class="title-left"
+          title="个人中心"
+          is-link
+        />
         <van-cell icon="gold-coin-o" title-class="title-left" title="我的钱包" is-link />
         <van-cell icon="gift-o" title-class="title-left" title="活动中心" is-link />
       </van-cell-group>
@@ -68,12 +75,21 @@
       </van-cell-group>
     </div>
   </div>
-  
 </template>
 <script lang='ts'>
 import { Component, Vue, Watch, Prop } from "vue-property-decorator";
 import { Action, Mutation, State, Getter } from "vuex-class";
-import { Toast, Row, Col, Icon, Skeleton, Cell, CellGroup, Grid, GridItem } from "vant";
+import {
+  Toast,
+  Row,
+  Col,
+  Icon,
+  Skeleton,
+  Cell,
+  CellGroup,
+  Grid,
+  GridItem
+} from "vant";
 import GridContent from "@/components/home/GridContent.vue";
 import Swiper from "@/components/Swiper.vue";
 import { SwiperType } from "@/interface";
@@ -85,7 +101,7 @@ import { SwiperType } from "@/interface";
     [Skeleton.name]: Skeleton,
     [GridItem.name]: GridItem,
     GridContent,
-    Swiper,
+    Swiper
   }
 })
 export default class extends Vue {
@@ -93,7 +109,7 @@ export default class extends Vue {
   private swiperImgsData = null;
   @Action("swiperImgs") private actionSwiperImgs;
   @Getter("swiperImgs") private getterSwiperImgs;
-  private async created() {
+  private async getSwiperImgs() {
     if (this.getterSwiperImgs.length === 0) {
       try {
         await this.actionSwiperImgs({ type: 2 } as SwiperType); // 传参时进行类型检查
@@ -106,6 +122,13 @@ export default class extends Vue {
       this.swiperImgsData = this.getterSwiperImgs;
     }
   }
+  private async skeletonNotShow() {
+    this.skeletonShow = false;
+  }
+  private async created() {
+    this.getSwiperImgs();
+    setTimeout(this.skeletonNotShow, 1000); // api获取首页数据
+  }
 }
 </script>
 <style scoped lang="scss">
@@ -117,10 +140,10 @@ export default class extends Vue {
     height: 240px;
   }
 }
-.body{
+.body {
   i {
     display: block;
-    font-size: 23px;  // grid中icon和字体大小
+    font-size: 23px; // grid中icon和字体大小
   }
 }
 .top-group {
@@ -132,18 +155,18 @@ export default class extends Vue {
     width: 200px;
   }
 }
-.skeleton{
-  margin:20px 0px;
+.skeleton {
+  margin: 20px 0px;
   .van-skeleton {
-  display: inline-block;
-  width: 50px;
-  margin: 0px 22px;
-  .van-skeleton__content {
+    display: inline-block;
     width: 50px;
+    margin: 0px 22px;
+    .van-skeleton__content {
+      width: 50px;
+    }
+    .van-skeleton__row {
+      height: 50px;
+    }
   }
-  .van-skeleton__row {
-    height: 50px;
-  }
-}
 }
 </style>

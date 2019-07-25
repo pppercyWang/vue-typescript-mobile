@@ -36,7 +36,7 @@ tslint.json ---语法检查配置文件
 ![image](https://github.com/pppercyWang/vue-typescript-mobile/blob/master/public/img/20190718143117.png)
 
 ### 骨架屏效果
-![image](https://github.com/pppercyWang/vue-typescript-mobile/blob/master/public/img/1564017657.jpg)
+![image](https://github.com/pppercyWang/vue-typescript-mobile/blob/master/public/img/demo.gif)
 
 ### 运行项目
 ```
