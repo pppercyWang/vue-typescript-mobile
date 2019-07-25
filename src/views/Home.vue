@@ -122,6 +122,7 @@ export default class extends Vue {
       this.swiperImgsData = this.getterSwiperImgs;
     }
   }
+  //
   private async skeletonNotShow() {
     this.skeletonShow = false;
   }
