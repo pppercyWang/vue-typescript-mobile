@@ -1,7 +1,7 @@
 # vue-typescript-mobile
 
 
-**最近经常看到Typescript的一些文章。决定自己也尝试用一下，感觉还不错。公司刚好有机会让我单独写一个pc端和移动端的产品。这里就写了一个模板跟大家下分享下**
+**最近经常看到Typescript的一些文章。决定自己也尝试用一下，感觉还不错。这里就写了一个模板跟大家下分享下**
 
 #### pc端管理平台模板：https://github.com/pppercyWang/vue-typescript-admin
 
